@@ -102,6 +102,8 @@ public class CustomTransitionSample extends Fragment {
             captureValues(transitionValues);
         }
 
+        //sherchen 因为没有指定targetId,所以会扫描指定的mTransitionsContainer下面的所有层级。
+//        但是因为这里用ProgressBar过滤掉了
         private void captureValues(TransitionValues transitionValues) {
             if (transitionValues.view instanceof ProgressBar) {
                 // save current progress in the values map
@@ -112,6 +114,7 @@ public class CustomTransitionSample extends Fragment {
 
         @Override
         public Animator createAnimator(ViewGroup sceneRoot, TransitionValues startValues, TransitionValues endValues) {
+//            这里也用ProgressBar过滤掉了。
             if (startValues != null && endValues != null && endValues.view instanceof ProgressBar) {
                 ProgressBar progressBar = (ProgressBar) endValues.view;
                 int start = (Integer) startValues.values.get(PROPNAME_PROGRESS);

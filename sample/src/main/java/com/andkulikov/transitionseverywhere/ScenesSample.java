@@ -55,6 +55,7 @@ public class ScenesSample extends Fragment implements RadioGroup.OnCheckedChange
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //默认使用了scene1
         View view = inflater.inflate(R.layout.fragment_scenes, container, false);
 
         RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.select_scene);
