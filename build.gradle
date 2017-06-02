@@ -1,9 +1,13 @@
 buildscript {
     repositories {
         jcenter()
+        maven {
+            url "http://maven.bughd.com/public"
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'im.fir:gradle-fir-publisher:1.0.7'
     }
 
     project.ext {
