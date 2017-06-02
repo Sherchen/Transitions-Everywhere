@@ -3,8 +3,8 @@ apply plugin:'im.fir.plugin.gradle'
 
 dependencies {
     compile project(':library')
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:recyclerview-v7:25.0.1'
 }
 
 android {
@@ -16,6 +16,11 @@ android {
         targetSdkVersion parent.ext.targetSdkVersion
         versionCode 1
         versionName parent.ext.versionName
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     fir{

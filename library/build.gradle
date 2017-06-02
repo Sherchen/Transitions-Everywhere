@@ -10,10 +10,15 @@ android {
         versionCode 1
         versionName parent.ext.versionName
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
-    compile "com.android.support:support-v4:22.2.1"
+    compile "com.android.support:support-v4:25.0.1"
 }
 
 //apply from: rootProject.file('library/gradle-mvn-push.gradle')
