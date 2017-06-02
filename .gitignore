@@ -23,3 +23,5 @@ proguard/
 
 # Mac OS File
 .DS_Store
+sherchen20170602.keystore
+gradle.properties

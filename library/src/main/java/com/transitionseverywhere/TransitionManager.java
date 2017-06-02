@@ -168,6 +168,37 @@ public class TransitionManager {
     }
 
     /**
+     * Returns the Transition for the given scene being entered. The result
+     * depends not only on the given scene, but also the scene which the
+     * {@link Scene#getSceneRoot() sceneRoot} of the Scene is currently in.
+     *
+     * @param scene The scene being entered
+     * @return The Transition to be used for the given scene change. If no
+     * Transition was specified for this scene change, the default transition
+     * will be used instead.
+     */
+    private Transition getTransition(Scene scene, long duration) {
+        Transition transition = null;
+        ViewGroup sceneRoot = scene.getSceneRoot();
+        if (sceneRoot != null) {
+            // TODO: cached in Scene instead? long-term, cache in View itself
+            Scene currScene = Scene.getCurrentScene(sceneRoot);
+            if (currScene != null) {
+                ArrayMap<Scene, Transition> sceneTransitionMap = mScenePairTransitions.get(scene);
+                if (sceneTransitionMap != null) {
+                    transition = sceneTransitionMap.get(currScene);
+                    if (transition != null) {
+                        transition.setDuration(duration);
+                        return transition;
+                    }
+                }
+            }
+        }
+        transition = mSceneTransitions.get(scene);
+        return (transition != null) ? transition : sDefaultTransition;
+    }
+
+    /**
      * This is where all of the work of a transition/scene-change is
      * orchestrated. This method captures the start values for the given
      * transition, exits the current Scene, enters the new scene, captures
@@ -353,6 +384,10 @@ public class TransitionManager {
         // Auto transition if there is no transition declared for the Scene, but there is
         // a root or parent view
         changeScene(scene, getTransition(scene));
+    }
+
+    public void transitionTo(Scene scene, long duration) {
+        changeScene(scene, getTransition(scene, duration));
     }
 
     /**

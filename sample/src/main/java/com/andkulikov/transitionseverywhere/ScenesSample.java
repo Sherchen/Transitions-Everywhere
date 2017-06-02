@@ -76,6 +76,7 @@ public class ScenesSample extends Fragment implements RadioGroup.OnCheckedChange
         mTransitionManagerForScene3 = TransitionInflater.from(getContext())
             .inflateTransitionManager(R.anim.scene3_transition_manager, mSceneRoot);
 
+        mTransitionManagerForScene3.transitionTo(mScene3, 500);
         return view;
     }
 
