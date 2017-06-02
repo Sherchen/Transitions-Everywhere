@@ -1,3 +1,6 @@
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.9'
+}
 buildscript {
     repositories {
         jcenter()
@@ -6,15 +9,15 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.0.0-alpha2'
+        classpath 'com.android.tools.build:gradle:2.1.2'
         classpath 'im.fir:gradle-fir-publisher:1.0.7'
     }
 
     project.ext {
-        buildToolsVersion = "23.0.1"
+        buildToolsVersion = "23.0.2"
         minSdkVersion = 8
         targetSdkVersion = 23
-        supportVersion = "22.2.1"
+        supportVersion = "23.1.1"
         versionName = "1.7.2"
     }
 }
