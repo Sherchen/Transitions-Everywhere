@@ -3,8 +3,8 @@ apply plugin:'im.fir.plugin.gradle'
 
 dependencies {
     compile project(':library')
-    compile 'com.android.support:appcompat-v7:25.0.1'
-    compile 'com.android.support:recyclerview-v7:25.0.1'
+    compile 'com.android.support:appcompat-v7:' + parent.ext.supportVersion
+    compile 'com.android.support:recyclerview-v7:'  + parent.ext.supportVersion
 }
 
 android {
