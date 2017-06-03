@@ -33,5 +33,5 @@ before_install:
 #- fir p sample/build/outputs/apk/sample-release.apk -T $FIR_TOKEN -c "测试看看能不能用fir-cli"
 #- fir p sample/build/outputs/apk/sample-release.apk -T $FIR_TOKEN -c "`git log -n 1`"
 #- fir publish sample/build/outputs/apk/sample-release.apk -T $FIR_TOKEN -c "`git cat-file tag $TRAVIS_TAG`"
-after_script
+after_script:
 - fir p sample/build/outputs/apk/sample-release.apk -T $FIR_TOKEN -c "测试看看能不能用fir-cli"
