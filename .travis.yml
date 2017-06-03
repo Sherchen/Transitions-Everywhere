@@ -26,6 +26,10 @@ before_install:
 - gem install fir-cli
 after_deploy:
 - fir publish sample/build/outputs/apk/sample-release.apk -T $FIR_TOKEN -c "`git cat-file tag $TRAVIS_TAG`"
+
+notifications:
+  email:
+  - ncuboy_045wsq@qq.com
 ############### 每次提交时使用 ##########################
 #after_script:
 #- fir p sample/build/outputs/apk/sample-release.apk -T $FIR_TOKEN -c "`git log -n 1`"
