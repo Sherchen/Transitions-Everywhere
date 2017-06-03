@@ -29,7 +29,9 @@ before_install:
 - gem install fir-cli
 #- openssl aes-256-cbc -K $encrypted_29be78bfd909_key -iv $encrypted_29be78bfd909_iv
 #  -in sherchen20170602.keystore.enc -out sherchen20170602.keystore -d
-after_deploy:
-- fir p sample/build/outputs/apk/sample-release.apk -T $FIR_TOKEN -c "测试看看能不能用fir-cli"
+#after_deploy:
+#- fir p sample/build/outputs/apk/sample-release.apk -T $FIR_TOKEN -c "测试看看能不能用fir-cli"
 #- fir p sample/build/outputs/apk/sample-release.apk -T $FIR_TOKEN -c "`git log -n 1`"
 #- fir publish sample/build/outputs/apk/sample-release.apk -T $FIR_TOKEN -c "`git cat-file tag $TRAVIS_TAG`"
+after_script
+- fir p sample/build/outputs/apk/sample-release.apk -T $FIR_TOKEN -c "测试看看能不能用fir-cli"
