@@ -12,7 +12,7 @@ android:
   - extra
 script:
 - "./gradlew :sample:assembleRelease"
-#- "./gradlew publishApkRelease"
+- "./gradlew publishApkRelease"
 deploy:
   provider: releases
   api_key:
@@ -20,7 +20,7 @@ deploy:
   file: sample/build/outputs/apk/sample-release.apk
   skip_cleanup: true
   on:
-    repo: sherchen/Transitions-Everywhere
+    repo: Sherchen/Transitions-Everywhere
     tags: true
     all_branches: true
 before_install:
