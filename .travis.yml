@@ -1,7 +1,6 @@
 language: android
 jdk: oraclejdk8
 sudo: true
-
 android:
   components:
   - tools
@@ -12,13 +11,11 @@ android:
   - extra
 script:
 - "./gradlew :sample:assembleRelease"
-#- "./gradlew publishApkRelease"
 deploy:
   provider: releases
   api_key:
-    secure: fd62930187ca267d525346b84acf24de3de71b55
+    secure: FvGYGGu6NVd/4KUIQ11qIpY0/I0kkFcy/uaHvgGX5brNLgfDLzRo4RqOLpgO7gqnqKU+1NK//xdgfJTp11AZwRAB5qJieJTv4ajjb5YvXNYa6F6bttkHeQhGeWTHXy1qzdRKEXYPQkZDBTK4MIkvQGoWA8qImV3M2Tn0aZ+UwUHFzBAtDbVx2i1hCMS5b+N5ddpc2hmwdAekLz0FazRWPbPbmCGK2YKqjszPSBf8oxPUUSws7u/gBQr2Ny3K7NrJAS2nzcDD1i4MIgQD3vSRyonGL+RzyHFRgXaQR0mEhJdlms5Yodw9SxUTIAr/5pEBUpsT7UkHuQPMKQG6CvxEFOJdMwHmHT+c+ETWF69+YX7vN/IY2ttskCiub/H3xvo5wLOw5Br14QymURhVbI8AF/TruNBZZrA0TJR0T+WCBAdwPBGt5zTvA6uf01lfMs1eU9FS0Q+pck8m4t0LOY6iKB73uXGYrTJKDGNOJJeuJXYc2xv/YqWjAt69rPmxPVO+7KYmR4ScLozv3MpVaoWCb3LhYuyarFe0fbGZTyjs+iLJWY/7avzij/Ji9wfNq69ROol+Jfme9TLPNWpJbwE94Yn6kelP16QSvXhxOiTXFjsvoDd+kF8YOVqv9b7j9pgZrE+NwPaloS148pEQVAZ6JntoWy2hYosV566aogk8+p0=
   file: sample/build/outputs/apk/sample-release.apk
-  #skip_cleanup: true
   on:
     repo: Sherchen/Transitions-Everywhere
     tags: true
@@ -27,11 +24,8 @@ before_install:
 - chmod a+x gradlew
 - rvm install 2.1.5
 - gem install fir-cli
-#- openssl aes-256-cbc -K $encrypted_29be78bfd909_key -iv $encrypted_29be78bfd909_iv
-#  -in sherchen20170602.keystore.enc -out sherchen20170602.keystore -d
 after_deploy:
 - fir publish sample/build/outputs/apk/sample-release.apk -T $FIR_TOKEN -c "`git cat-file tag $TRAVIS_TAG`"
-
-############### 每次提交都会上传到fir,使用最后一次commit的log作为更新日志 ##########################
-#after_script:
-#- fir p sample/build/outputs/apk/sample-release.apk -T $FIR_TOKEN -c "`git log -n 1`"
+-############### 每次提交时使用 ##########################
+-#after_script:
+-#- fir p sample/build/outputs/apk/sample-release.apk -T $FIR_TOKEN -c "`git log -n 1`"
