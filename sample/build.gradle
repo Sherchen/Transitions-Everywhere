@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin:'im.fir.plugin.gradle'
+//apply plugin:'im.fir.plugin.gradle'
 
 dependencies {
     compile project(':library')
@@ -23,10 +23,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_7
     }
 
-    fir{
-        apiToken '404f670a18ab853f3234d62028414e34'
-        changeLog '测试fir'
-    }
+//    fir{
+//        apiToken '404f670a18ab853f3234d62028414e34'
+//        changeLog '测试fir'
+//    }
 
     signingConfigs {
         releaseConfig {
